@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Parking Lot</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//create a car, create 100 cars, park 1 car, get 1 car to leave, park 100 cars, ensure all 100 cars leave//
+
+function car (make,year,plate) {
+	this.make = make;
+	this.year = year;
+  this.plate = plate;
+  this.parked = false;
+  this.parkingSpace = null;
+  this.timeParked = 4;
+  	}
+var x = new car ("Toyota", 2016, "fbs4545")
+console.log(x)
+
+function carMaker(count){
+  var arr = [];
+  for (var i = 0; i < count; i++) {
+    var firstCar = new car ("Toyota", 2016, i+"-fbs4545", 4);
+    arr.push(firstCar);
+  }
+  console.dir (arr);
+  return arr;
+};
+var result = carMaker(100);
+console.log(result);
+
+function parkCar(){
+  
+}
+
+
+//     var car = function (make, year, plate) {
+//             this.make = make;
+//             this.year = year;
+//             this.plate = plate;
+//         }
+//         var x = new car("chevy", 2010, "f320")
+//         console.log(x)
+        
+
+//         var createCars = function(count){
+//             var ListOfCars = [];
+//             for(var i = 0; i < count; i++) {
+//                 var car1 = new car ("Subaru", 2012, i+"-FYI453");
+//                 ListOfCars.push(car1);
+//             }
+//             console.dir(ListOfCars);
+//             return ListOfCars;
+//         }
+        
+        
+// var result = createCars(100);
+// console.log(result);
+// function createCars (id,make)	{
+//   for (var=i, i<100, i++) {
+
+//   }
+// }
+// function Employee(age){
+//     this.name = 'something';
+//     this.age= age;
+//     this.level=1;
+//     this.production=400;
+//     this.totalprod=0;
+// }
+
+
+// function maker(n) {
+//   var arr = [];
+//   while (n > 0) {
+//     arr.push(new Employee(n));
+//     n--;
+//   }
+//   return arr;
+// }
+
+
+	</script>
+
+</body>
+</html>
