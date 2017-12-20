@@ -1,64 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Parking Lot</title>
+    <meta charset="UTF-8">
+    <title>Parking Lot</title>
 </head>
+
 <body>
-	<script type="text/javascript">
-		//create a car, create 100 cars, park 1 car, get 1 car to leave, park 100 cars, ensure all 100 cars leave//
+    <script type="text/javascript">
+    //create a car, create 100 cars, park 1 car, get 1 car to leave, park 100 cars, ensure all 100 cars leave//
 
-//constructor for a car object
-function car (make,year,plate) {
-	this.make = make;
-	this.year = year;
-  this.plate = plate;
-  this.parked = false;
-  this.parkingSpace = null;
-  this.timeParked = 4;
-  	}
-var x = new car ("Toyota", 2016, "fbs4545")
-console.log(x)
+    //constructor for a car object
+    function car(make, year, plate) {
+        this.make = make;
+        this.year = year;
+        this.plate = plate;
+        this.parked = false;
+        this.parkingSpace = null;
+        this.timeParked = 1000;
+    }
+    var x = new car("Toyota", 2016, "fbs4545")
+    console.log(x)
 
-//function to create an array of cars where count is number of cars
-function carMaker(count){
-  var arr = [];
-  for (var i = 0; i < count; i++) {
-    var firstCar = new car ("Toyota", 2016, i+"-fbs4545", 4);
-    arr.push(firstCar);
-  }
-  console.dir (arr);
-  return arr;
-};
-var result = carMaker(100);
-console.dir (result);
+    //function to create an array of cars where count is number of cars
+    function carMaker(count) {
+        var arr = [];
+        for (var i = 0; i < count; i++) {
+            var firstCar = new car("Toyota", 2016, i + "-fbs4545", 4);
+            arr.push(firstCar);
+        }
+        console.dir(arr);
+        return arr;
+    };
+    var carDealer = carMaker(100);
+    console.dir(carDealer);
 
-//constructor for a parking space object
-function parkSpot (id) {
-  this.id = id;
-  this.vacant = true;
-      }
-var x = new parkSpot (1)
-console.log(x)
+    //constructor for a parking space object
+    function parkSpot(id) {
+        this.id = id;
+        this.vacant = true;
+    }
+    var x = new parkSpot(1)
+    console.log(x)
 
-//function to create an array of cars where count is number of cars
-function parkSpotMaker(count){
-  var arr = [];
-  for (var i = 1; i < count + 1; i++) {
-    var firstSpot = new parkSpot (i);
-    arr.push(firstSpot);
-  }
-  console.dir (arr);
-  return arr;
-};
-var result = parkSpotMaker(10);
-console.dir (result);
+    //function to create an array of cars where count is number of cars
+    function parkSpotMaker(count) {
+        var arr = [];
+        for (var i = 0; i < count; i++) {
+            var firstSpot = new parkSpot(i + 1);
+            arr.push(firstSpot);
+        }
+        console.dir(arr);
+        return arr;
+    };
+    var parkingLot = parkSpotMaker(10);
+    console.dir(parkingLot);
 
+    console.log(parkingLot.length);
+    //park one car, should have at least one car in car array with park = false; check if there is a space in lot vacant = true; add car to space and park = true and space vacant = false; on timer end space vacant = true; 
 
+    // function parkCar (){
+    function parkCar() {
+        for (var i = 0; i < carDealer.length; i++) {
+            for (var j = 0; j < parkingLot.length; j++) {
+                var notparked = carDealer[i].parked == false;
+                var isvacant = parkingLot[j].vacant == true;
+                if (notparked && isvacant) {
+                    console.log("car " + i + " is being parked in space " + j);
+                    carDealer[i].parked = true;
+                    parkingLot[j].vacant = false;
+                    carDealer[i].parkingSpace = j;
 
+                    console.log(carDealer[i].timeParked);
+                    var car = carDealer[i];
+                    var spot = parkingLot[j];
+                    leaveParkingLot(car, spot);
+                } else
+                    console.log(i + " doesn't know what to do");
+            }
+        }
+        console.dir(i);
+        return i;
+    }
 
+    function leaveParkingLot(car, spot) {
+      setTimeout(function() {
+          console.log("car " + car.plate + " is leaving space " + spot.id);
+          spot.vacant = true;
+          car.parkingSpace = null;
 
-	</script>
+      }, car.timeParked);
+    }
 
+    var status = parkCar();
+    // console.log (status);
+    </script>
 </body>
+
 </html>
