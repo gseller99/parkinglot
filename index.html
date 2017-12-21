@@ -71,19 +71,27 @@
                     parkingLot[j].vacant = false;
                     carDealer[i].parkingSpace = j;
 
-                    console.log(carDealer[i].timeParked);
-                    var car = carDealer[i];
-                    var spot = parkingLot[j];
-                    leaveParkingLot(car, spot);
-                } else
-                    console.log(i + " doesn't know what to do");
+                    scheduleCarLeavingParkingLot(carDealer[i], parkingLot[j]);
+                } 
+                // else if (notparked == false){
+                //   console.log(carDealer[i]);
+                //   console.log("all cars have been parked", carDealer);
+                //   clearInterval(myVar);
+                // }
+                else {
+                  if(carDealer[carDealer.length - 1].parked == true){
+                    console.log(i + " is already parked dude");
+                    clearInterval(myVar);
+                    break;
+                  }
+                }
             }
         }
         console.dir(i);
         return i;
     }
 
-    function leaveParkingLot(car, spot) {
+    function scheduleCarLeavingParkingLot(car, spot) {
       setTimeout(function() {
           console.log("car " + car.plate + " is leaving space " + spot.id);
           spot.vacant = true;
@@ -92,8 +100,12 @@
       }, car.timeParked);
     }
 
-    var status = parkCar();
-    // console.log (status);
+    var myVar = setInterval(parkCar, 3000);
+    console.dir(carDealer);
+      
+  
+
+ 
     </script>
 </body>
 
