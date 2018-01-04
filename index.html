@@ -32,7 +32,7 @@
         console.dir(arr);
         return arr;
     };
-    var numberCars = Number(100);
+    var numberCars = 100
     var carDealer = carMaker(numberCars);
     console.dir(carDealer);
 
@@ -44,7 +44,7 @@
     var x = new parkSpot(1)
     console.log(x)
 
-    //function to create an array of cars where count is number of cars
+    //function to create an array of spots where count is number of spots
     function parkSpotMaker(count) {
         var arr = [];
         for (var i = 0; i < count; i++) {
@@ -57,7 +57,6 @@
     var parkingLot = parkSpotMaker(10);
     console.dir(parkingLot);
 
-    // console.log(parkingLot.length);
     //park one car, should have at least one car in car array with park = false; check if there is a space in lot vacant = true; add car to space and park = true and space vacant = false; on timer end space vacant = true; 
 
     // function parkCar (){
@@ -68,17 +67,12 @@
                 var isvacant = parkingLot[j].vacant == true;
                 if (notparked && isvacant) {
                     console.log("car " + i + " is being parked in space " + j);
-                    carDealer[i].parked == true;
-                    parkingLot[j].vacant == false;
-                    carDealer[i].parkingSpace == j;
+                    carDealer[i].parked = true;
+                    parkingLot[j].vacant = false;
+                    carDealer[i].parkingSpace = j;
 
                     scheduleCarLeavingParkingLot(carDealer[i], parkingLot[j]);
                 } 
-                // else if (notparked == false){
-                //   console.log(carDealer[i]);
-                //   console.log("all cars have been parked", carDealer);
-                //   clearInterval(myVar);
-                // }
                 else {
                   if(carDealer[carDealer.length - 1].parked == true){
                     console.log("car " + carDealer[i].plate + " has already been parked dude");
@@ -88,7 +82,7 @@
                 }
             }
         }
-        if(carDealer[numberCars - 1].parked == true){
+        if(carDealer[99].parked == true){
             console.dir("All cars have been parked");
         }
         else {
@@ -109,11 +103,7 @@
 
     var myVar = setInterval(parkCar, 3000);
     console.dir(carDealer);
-      
-  
-
- 
-    </script>
+</script>
 </body>
 
 </html>
