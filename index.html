@@ -32,7 +32,8 @@
         console.dir(arr);
         return arr;
     };
-    var carDealer = carMaker(100);
+    var numberCars = Number(100);
+    var carDealer = carMaker(numberCars);
     console.dir(carDealer);
 
     //constructor for a parking space object
@@ -56,7 +57,7 @@
     var parkingLot = parkSpotMaker(10);
     console.dir(parkingLot);
 
-    console.log(parkingLot.length);
+    // console.log(parkingLot.length);
     //park one car, should have at least one car in car array with park = false; check if there is a space in lot vacant = true; add car to space and park = true and space vacant = false; on timer end space vacant = true; 
 
     // function parkCar (){
@@ -87,8 +88,13 @@
                 }
             }
         }
-        console.dir(i);
-        return i;
+        if(carDealer[numberCars - 1].parked == true){
+            console.dir("All cars have been parked");
+        }
+        else {
+        console.dir("This is parking cars and driving them away");
+        return i
+        }
     }
 
     function scheduleCarLeavingParkingLot(car, spot) {
