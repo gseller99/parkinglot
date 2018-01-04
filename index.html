@@ -68,9 +68,9 @@
                 var isvacant = parkingLot[j].vacant == true;
                 if (notparked && isvacant) {
                     console.log("car " + i + " is being parked in space " + j);
-                    carDealer[i].parked = true;
-                    parkingLot[j].vacant = false;
-                    carDealer[i].parkingSpace = j;
+                    carDealer[i].parked == true;
+                    parkingLot[j].vacant == false;
+                    carDealer[i].parkingSpace == j;
 
                     scheduleCarLeavingParkingLot(carDealer[i], parkingLot[j]);
                 } 
