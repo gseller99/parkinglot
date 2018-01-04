@@ -17,7 +17,7 @@
         this.plate = plate;
         this.parked = false;
         this.parkingSpace = null;
-        this.timeParked = 1000;
+        this.timeParked = 500;
     }
     var x = new car("Toyota", 2016, "fbs4545")
     console.log(x)
@@ -26,7 +26,7 @@
     function carMaker(count) {
         var arr = [];
         for (var i = 0; i < count; i++) {
-            var firstCar = new car("Toyota", 2016, i + "-fbs4545", 4);
+            var firstCar = new car("Toyota", 2016, i + "-fbs4545");
             arr.push(firstCar);
         }
         console.dir(arr);
@@ -80,7 +80,7 @@
                 // }
                 else {
                   if(carDealer[carDealer.length - 1].parked == true){
-                    console.log(i + " is already parked dude");
+                    console.log("car " + carDealer[i].plate + " has already been parked dude");
                     clearInterval(myVar);
                     break;
                   }
@@ -97,7 +97,8 @@
           spot.vacant = true;
           car.parkingSpace = null;
 
-      }, car.timeParked);
+      }
+      , car.timeParked);
     }
 
     var myVar = setInterval(parkCar, 3000);
