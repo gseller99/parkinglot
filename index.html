@@ -32,7 +32,7 @@
         console.dir(arr);
         return arr;
     };
-    var numberCars = 100
+    var numberCars = Number(100);
     var carDealer = carMaker(numberCars);
     console.dir(carDealer);
 
@@ -82,7 +82,7 @@
                 }
             }
         }
-        if(carDealer[99].parked == true){
+        if(carDealer[numberCars - 1].parked == true){
             console.dir("All cars have been parked");
         }
         else {
